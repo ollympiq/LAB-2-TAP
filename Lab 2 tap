@@ -1,0 +1,72 @@
+
+class First {
+    private String name,race;
+    private int age,number;
+
+    public First(){
+        System.out.println("Constructor implicit din clasa First");
+    }
+     public  First(String name, int age){
+        this(name,"",age,0);
+    }
+       public First (String name, String race, int age,int number){
+        this.name = name;
+        this.race = race;
+        this.age = age;
+        this.number = number;
+        }
+
+    public void personDetails(){
+        System.out.println("Detalii despre persoana :"+
+                " El este " + name + " de rasa " + race + " si are " + age + " ani" );
+    }
+    public void numarulPersoanei(int number){
+            this.number = number;
+            System.out.println("Numarul persoanei : " + number);
+    }
+}
+class Second extends First {
+    private String gender;
+    public Second (String name, int age){
+        super(name,"",age,0);
+
+    }
+    public Second(String name,String race,int age,int number,String gender){
+        super(name,race,age,number);
+        this.gender = gender;
+    }
+    public void displayGender(){
+        System.out.println("Genul persoanei din clasa Second este: " + gender);
+    }
+
+}
+
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        // a) Obiectul clase de bază folosind constructorul clasei de bază;
+        First nr1 = new First("John", 30);
+        nr1.personDetails();
+        nr1.numarulPersoanei(1);
+
+        // b) Obiectul clase derivate folosind constructorul clasei de bază;
+        Second nr2 = new Second("Ionut", 20);
+        nr2.personDetails();
+        nr2.numarulPersoanei(2);
+        nr2.displayGender();
+
+        // c) Obiectul clase de derivate folosind constructorul clasei derivate;
+        Second nr3 = new Second("Po", "Asian", 35, 5678, "Masculin");
+        nr3.personDetails();
+        nr3.numarulPersoanei(3);
+        nr3.displayGender();
+
+        // d) Obiectul clase de bază folosind constructorul clasei derivate;
+        First nr4 = new Second("Alice", 25);
+        nr4.personDetails();
+        nr4.numarulPersoanei(4);
+
+    }
+}
